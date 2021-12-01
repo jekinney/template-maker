@@ -6,13 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Basic extends Model
 {
-     /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
-    protected $casts = ['locations' => 'array'];
-
     /**
      * Guarded columns from mass assignment
      * 
@@ -61,7 +54,7 @@ class Basic extends Model
     {
        $html = $this->html;
        $variables = Variable::get();
-       
+
        foreach ( $variables as $variable ) {
            $html = str_replace( $variable->variable, $variable->test_data, $html );
        }
