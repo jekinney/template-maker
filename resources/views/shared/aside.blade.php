@@ -4,7 +4,7 @@
     Avalible Variables
   </div>
 
-  <div class="panle-body">
+  <div class="panel-body">
     @foreach( $variables as $variable )
       <div class="panel panel-default">
         <div class="panel-heading"><strong>Name: </strong>{{ $variable->name }}</div>

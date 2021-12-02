@@ -55,9 +55,11 @@ class VariableController extends Controller
      * @param  \App\Template\Variable  $variable
      * @return \Illuminate\Http\Response
      */
-    public function show(Variable $variable)
+    public function listings(Variable $variable)
     {
-        //
+        return response()->json([
+            'variables' => $variable->orderBy('name', 'asc')->get() 
+        ]);
     }
 
     /**

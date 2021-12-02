@@ -7,12 +7,11 @@
             <div class="panel panel-default">
 
                 <div class="panel-heading">
-                  Preview for template {{ $convert->name }}
-                  <a href="{{ route('convert.index') }}" class="btn btn-primary">List</a>
+                  Preview for template {{ $advanced->name }}
                 </div>
 
                 <div class="panel-body">
-                  {!! $convert->html !!}
+                  <img src="{{ asset('storage/uploads/test_2.png') }}" />
                 </div>
 
             </div>

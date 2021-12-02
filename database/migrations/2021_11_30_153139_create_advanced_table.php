@@ -17,7 +17,8 @@ class CreateAdvancedTable extends Migration
             $table->increments('id');
             $table->string('name', 60);
             $table->string('description', 550);
-            $table->string('path');
+            $table->string('pdf_path');
+            $table->string('image_path')->nullable();
             $table->mediumText('locations')->nullable();
             $table->timestamps();
         });

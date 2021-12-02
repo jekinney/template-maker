@@ -11,7 +11,7 @@
                 </div>
 
                 <div class="panel-body">
-                  <form action="{{ route('advanced.store') }}" method="post">
+                  <form action="{{ route('advanced.store') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="row">
                       <div class="col-sm-6 form-group {{ $errors->has('name') ? ' has-error' : '' }}">

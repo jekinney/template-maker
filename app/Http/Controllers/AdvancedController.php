@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Template\Advanced;
+use App\Template\{
+    Advanced,
+    Variable
+};
 use Illuminate\Http\Request;
 
 class AdvancedController extends Controller
@@ -37,20 +40,8 @@ class AdvancedController extends Controller
      */
     public function store(Request $request, Advanced $advanced)
     {
-        $this->validate( $request, [
-            'name' => 'required|string|unique:basics,name',
-            'file' => 'required|file',
-            'description' => 'required',
-        ]);
-
-        $url = $request->file->store( '/public/upload/pdf' );
-
-        $advance = $advanced->create([
-            'name' => $request->name,
-            'path' => asset( 'storage/'.$url ),
-            'description' => $request->description,
-        ]);
-
+        $advance = $advanced->find(1);
+        
         return redirect()->route('advanced.edit', $advance);
     }
 
@@ -62,7 +53,7 @@ class AdvancedController extends Controller
      */
     public function show(Advanced $advanced)
     {
-        //
+        return view('advanced.show', compact('advanced'));
     }
 
     /**
@@ -71,9 +62,11 @@ class AdvancedController extends Controller
      * @param  \App\Template\Advanced $advanced
      * @return \Illuminate\Http\Response
      */
-    public function edit(Advanced $advanced)
+    public function edit(Advanced $advanced, Variable $variable)
     {
-        
+        $variables = $variable->orderBy('name', 'asc')->get();
+
+        return view('advanced.edit', compact('advanced', 'variables'));
     }
 
     /**
@@ -85,11 +78,7 @@ class AdvancedController extends Controller
      */
     public function update(Request $request, Advanced $advanced)
     {
-        $advance = $advanced->create([
-            'name' => $request->name,
-            'locations' => $request->locations,
-            'description' => $request->description,
-        ]);
+        return view('advanced.show', compact('advanced'));
     }
 
     /**

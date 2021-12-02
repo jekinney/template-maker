@@ -1,4 +1,4 @@
 <?php
 
 
-Route::post('/convert', 'ConvertController@store')->name('api.convert.store');
+Route::get('/variable/listings', 'VariableController@listings');
